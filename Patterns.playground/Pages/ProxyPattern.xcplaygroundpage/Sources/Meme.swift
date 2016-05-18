@@ -3,6 +3,7 @@ import Foundation
 public enum Meme: Hashable {
   case CondescendingWonka(top: String, bottom: String)
   case TsaDouche(top: String, bottom: String)
+  case Borked
   
   public var hashValue: Int {
     switch self {
@@ -10,6 +11,8 @@ public enum Meme: Hashable {
       return topText.hashValue + bottomText.hashValue
     case .TsaDouche(let topText, let bottomText):
       return topText.hashValue + bottomText.hashValue
+    case .Borked:
+        return 1
     }
   }
   
@@ -19,6 +22,8 @@ public enum Meme: Hashable {
       return "Condescending Wonka"
     case .TsaDouche(_, _):
       return "TSA Douche"
+    case .Borked:
+        return "I will fail"
     }
   }
   
@@ -31,7 +36,10 @@ public enum Meme: Hashable {
     case .TsaDouche(let topText, let bottomText):
       let query = "meme=\(name())&top=\(topText)&bottom=\(bottomText)"
       return query.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())!
+    case .Borked:
+      return "totally/fake/querystring"
     }
+    
   }
   
   

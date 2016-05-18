@@ -2,7 +2,10 @@ import Foundation
 import UIKit
 
 
-
+/*
+ * Simple Proxy
+    Takes the enum and very crudely builds a URL
+ */
 public class SimpleProxy {
   private let semaphore = dispatch_semaphore_create(0)
   
@@ -21,7 +24,9 @@ public class SimpleProxy {
       
       guard let data = data else {
         dispatch_semaphore_signal(self.semaphore)
-        return print("feelsbadman")
+        print("feelsbadman")
+        image = UIImage(contentsOfFile: "/Users/mratoms/Presentations/Playgrounds/Patterns.playground/Pages/ProxyPattern.xcplaygroundpage/Resources/feelsbadman.png")!
+        return
       }
       image = UIImage(data: data)
       
